@@ -1,0 +1,18 @@
+{
+  "name": "student.web.jw",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular-local-storage": "^0.7.1",
+    "browser-sync": "^2.26.5",
+    "del": "^4.1.0",
+    "fs": "0.0.1-security",
+    "gulp": "^4.0.1",
+    "http": "0.0.0",
+    "http-proxy-middleware": "^0.19.1",
+    "oclazyload": "^1.1.0",
+    "path": "^0.12.7",
+    "proxy": "^0.2.4",
+    "url": "^0.11.0",
+    "yargs": "^13.2.2"
+  }
+}
