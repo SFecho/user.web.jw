@@ -13,15 +13,11 @@ app.controller('profileController', function ($scope, $log, $http, localStorageS
     $scope.userInfo = {}
     $scope.userLoad = function () {
 
-        $log.info(localStorageService.get('userInfo'))
-        $log.info('sasas')
-        $scope.userInfo = localStorageService.get('userInfo')
+    $scope.userInfo = localStorageService.get('userInfo')
 
-
-        if($scope.userInfo.sex == 'W')
-            $scope.userInfo.realSex = '女'
-        else
-            $scope.userInfo.realSex = '男'
-        $log.info($scope.userInfo)
+    if($scope.userInfo.sex == 'W')
+        $scope.userInfo.realSex = '女'
+    else
+        $scope.userInfo.realSex = '男'
     }
 })

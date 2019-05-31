@@ -27,7 +27,6 @@ app.controller('loginController', ($scope, $log, $http, localStorageService)=>{
                         window.location.href = "main.html"
                         a.click()
                     }else{
-                        $log.info('null')
                         alert('账号或密码错误，请重新输入。')
                     }
                 },

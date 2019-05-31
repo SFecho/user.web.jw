@@ -403,11 +403,20 @@
 					</div>
 				</div><!-- /.sidebar-shortcuts -->
 
-				<ul class="nav nav-list">
+				<ul class="nav nav-list" ng-controller="mainController">
 					<li class="active">
-						<a href="../user/profile.html" target="mainFrame">
+						<a href="../user/profile.html" ng-click="profilePage()"  target="mainFrame">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> 个人中心 </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+
+					<li class="active">
+						<a href="../user/upLoad.html" ng-click="upLoadPage()" target="mainFrame">
+							<i class="menu-icon fa fa-file-o"></i>
+							<span class="menu-text"> 上传图片 </span>
 						</a>
 
 						<b class="arrow"></b>
@@ -896,7 +905,7 @@
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="#">Home</a>
 							</li>
-							<li class="active">个人中心</li>
+							<li class="active">{{currentPage}}</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -983,7 +992,7 @@
 
 								<!--src="../user/profile.html"-->
 
-								<iframe id="cwin" name="mainFrame" frameborder="0" width="100%" src="../user/profile.html"></iframe>
+								<iframe id="cwin"  name="mainFrame" frameborder="0" width="100%" src="../user/profile.html"></iframe>
 
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->

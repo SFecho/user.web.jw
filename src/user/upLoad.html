@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh_CN" ng-app="app">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="UTF-8">
+    <title>作品上传</title>
+    <meta name="description" content="Common form elements and layouts" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" href="../assets/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/ace/1.4/css/jquery-ui.custom.min.css" />
+
+    <link rel="stylesheet" href="../assets/googleapis-fonts/201609/fonts.css" />
+    <link rel="stylesheet" href="../assets/ace/1.4/css/ace.min.css" />
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="../assets/ace/1.4/css/ace-part2.min.css" />
+    <![endif]-->
+    <link rel="stylesheet" href="../assets/ace/1.4/css/ace-rtl.min.css" />
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="../assets/ace/1.4/css/ace-ie.min.css" />
+    <![endif]-->
+    <!--[if lte IE 8]>
+    <script src="../assets/bootstrap/3.3.7/js/html5shiv.min.js"></script>
+    <script src="../assets/bootstrap/3.3.7/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="no-skin" ng-controller="upLoadController">
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.loadState('main-container')}catch(e){}
+    </script>
+    <div class="main-content">
+        <div class="main-content-inner">
+
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>医疗图像上传
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right">
+                            </i>
+                        </small>
+                    </h1>
+                </div><!-- /.page-header -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <form class="form-horizontal"  id="frm" name="frm" role="form">
+                            <div class="space-4"></div>
+                            <div class="form-group"  >
+                                <label class="col-sm-3 control-label no-padding-right" for="fileName">文件名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="fileName" id="fileName" placeholder="请输入文件名" class="col-xs-10 col-sm-5"  ng-model="fileInfo.fileName" />
+                                </div>
+                            </div>
+                            <div class="form-group" >
+                                <label class="col-sm-3 control-label no-padding-right" for="filePath">上传路径：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="filePath" id="filePath" placeholder="请输入上传路径" class="col-xs-10 col-sm-5" ng-model="fileInfo.filePath"  />
+                                </div>
+                            </div>
+<!--                            <div class="form-group">-->
+<!--                                <label class="col-sm-3 control-label no-padding-right" for="form-field-select-3">课程内容</label>-->
+<!--                                <div class="col-sm-9">-->
+<!--                                    <select name="title" class="chosen-select col-xs-10 col-sm-5" id="form-field-select-3" data-placeholder="选择上课内容...">-->
+<!--                                        <option value=""></option>-->
+<!--                                        &lt;!&ndash;-->
+<!--                                        <option value="QQ音乐">QQ音乐</option>-->
+<!--                                        <option value="图片墙">图片墙</option>-->
+<!--                                        <option value="需求描述修改版">需求描述修改版</option>-->
+<!--                                        <option value="软件工程实验报告1">软件工程实验报告1（截至到2018年11月11日）</option>-->
+<!--                                        <option value="软件工程实验报告2">软件工程实验报告2（截至到2018年12月23日）</option>-->
+<!--                                        <option value="软件工程课程设计综合性设计性实验报告">软件工程课程设计综合性设计性实验报告（截至到2018年12月23日）</option>-->
+<!--                                        &ndash;&gt;-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="id-input-file-3">上传作品：</label>
+                                <div class="col-sm-9">
+                                    <div class="row">
+                                        <div class="col-xs-10 col-sm-5">
+                                            <input name="file" multiple="" type="file" id="id-input-file-3"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix form-actions">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button class="btn btn-info"  ng-click="doUpLoad()">
+                                        <i class="ace-icon fa fa-check bigger-110"></i>上传
+                                    </button>
+                                    &nbsp; &nbsp; &nbsp;
+                                    <button class="btn" type="reset">
+                                        <i class="ace-icon fa fa-undo bigger-110"></i>重置
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
+<script src="../assets/jquery/jquery-3.3.1.js"></script>
+
+<script src="../assets/ace/1.4/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--[if IE]>
+<script src="../assets/jquery/jquery-1.11.3.min.js"></script>
+
+<![endif]-->
+
+<script src="../assets/angular/1.6.9/angular.min.js"></script>
+<script src="../assets/angular-local-storage/0.7.1/angular-local-storage.min.js"></script>
+<script src="../assets/student/js/upLoad.js"></script>
+
+
+<script type="text/javascript">
+    if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<!-- page specific plugin scripts -->
+<!--[if lte IE 8]>
+<script src="../assets/ace/1.4/js/excanvas.min.js"></script>
+<![endif]-->
+<!-- ace scripts -->
+<script src="../assets/ace/1.4/js/ace-elements.min.js"></script>
+<script src="../assets/ace/1.4/js/ace.min.js"></script>
+<script type="text/javascript">
+    function uploadForm(){
+        if(frm.fileName.value.length==0){
+            alert("请输入文件路径！");
+            return false;
+        }
+        if(frm.filePath.value.length==0){
+            alert("请输入文件名！");
+            return false;
+        }
+        // if(frm.title.value.length==0){
+        //     alert("请选择上课内容！");
+        //     return false;
+        // }
+        if(frm.file.value.length==0){
+            alert("请选择上传图片！");
+            return false;
+        }
+        return true;
+    }
+
+</script>
+<script type="text/javascript">
+    jQuery(function($) {
+        $('#id-input-file-3').ace_file_input({
+            style: 'well',
+            btn_choose: '拖动文件到此或单击选择文件',
+            btn_change: null,
+            no_icon: 'ace-icon fa fa-cloud-upload',
+            droppable: true,
+            thumbnail: 'small'//large | fit,
+            //
+            // before_change:function(files, dropped) {
+            //            //Check an example below
+            //            //or examples/file-upload.html
+            //            return true;
+            //         },
+            //
+            // before_remove : function() {
+            //            return true;
+            //         },
+            //
+            // preview_error : function(filename, error_code) {
+            //     //name of the file that failed
+            //     //error_code values
+            //     //1 = 'FILE_LOAD_FAILED',
+            //     //2 = 'IMAGE_LOAD_FAILED',
+            //     //3 = 'THUMBNAIL_FAILED'
+            //     //alert(error_code);
+            // }
+        }).on('change', function(){
+            //console.log($(this).data('ace_input_files'));
+            //console.log($(this).data('ace_input_method'));
+        });
+    });
+</script>
+
+<script src="../assets/ace/1.4/js/iframeResizer.contentWindow.min.js"></script>
+
+</body>
+</html>
