@@ -8,7 +8,8 @@ app.config(function (localStorageServiceProvider) {
 });
 
 app.controller('loginController', ($scope, $log, $http, localStorageService)=>{
-    $scope.user = {} //{id:201521012362. password:123456} "{"id":"201521012362." password:123456}
+    $scope.user = {}
+    $scope.rootDirInfo = {}
     $scope.doLogin = () => {
         $http({
                 method: 'POST',
@@ -20,9 +21,9 @@ app.controller('loginController', ($scope, $log, $http, localStorageService)=>{
                 function successCallBack(response){
                     if(response.data != ''){
                         $scope.user = response.data
-                        $log.info(response.data)
                         localStorageService.set('userInfo', $scope.user)
 
+                        //得到根目录
                         var a = document.getElementById("openBlank");
                         window.location.href = "main.html"
                         a.click()

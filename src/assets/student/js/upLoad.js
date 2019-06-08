@@ -7,20 +7,16 @@ app.config(function (localStorageServiceProvider) {
 });
 
 app.controller('upLoadController', function ($scope, $log, $http, localStorageService) {
-
     $scope.fileInfo = {}
 
     $scope.doUpLoad = function () {
        // filePath
         var file = angular.element("#id-input-file-3")[0].files[0];
 
-        $log.info(file)
-        $log.info($scope.fileInfo)
         var formData = new FormData()
         formData.append('file', file)
         formData.append('fileInfo', angular.toJson($scope.fileInfo))
 
-        $log.info($scope.fileInfo)
 
         if(uploadForm() == true){
             $http({
